@@ -1,0 +1,185 @@
+{% extends 'iroomie/index.html' %}
+{% load crispy_forms_tags %}
+
+
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <div class="pageheader">
+       
+    <div class="row">
+        <div class="col-xl-7 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="pageheader-caption">
+                <h1 class="pageheader-caption-title">Find Compatible <i>Roommates</i></h1>
+                
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+</div>
+
+        <!-- pageheader start  -->
+        <div class="pt-lg-11 pb-lg-11 pt-7 pb-7">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+                        <div class="filter-sidebar card mb-3">
+                            <h4 class="card-header bg-white "><span class="text-primary mr-2"><i class="mdi mdi-tune"></i></span>Filter</h4>
+                            <!-- filter widget start -->
+                            <!-- filter widget start -->
+                            <div class="card-body border-bottom">
+                                <a class="h5 text-dark d-block" data-toggle="collapse" href="#collapseRating" role="button" aria-expanded="false" aria-controls="collapseRating">
+                                    Profile Based  <i class="mdi mdi-chevron-down float-right"></i>
+                                </a>
+                                <div class="collapse show mt-3" id="collapseRating">
+                                    <form method="get" action="{% url 'roommate_advance_search' %}">
+
+                                        {{profile_filter.form|crispy}}
+                                        <div class="card-body">
+                                            <button type="submit" class="btn btn-primary btn-block">Search</button>
+                                        </div>
+                                        
+                                    </form>
+                                </div>
+                            </div>
+                           
+                       
+                            <div class="card-body border-bottom">
+                                <a class="h5 text-dark d-block" data-toggle="collapse" href="#collapsePricing" role="button" aria-expanded="false" aria-controls="collapsePricing">
+                                    Preference Based <i class="mdi mdi-chevron-down float-right"></i>
+                                </a>
+                                <div class="collapse show pt-5 " id="collapsePricing">
+                                    <form method="get" action="{% url 'roommates_pref_search' %}">
+
+                                        {{preference_filter.form|crispy}}
+                                        <div class="card-body">
+                                            <button type="submit" class="btn btn-primary btn-block">Search</button>
+                                        </div>
+                                        
+                                    </form>
+                                </div>
+                            </div>
+                       
+                           
+                            <!-- filter widget close -->
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
+   
+                        <div class="row">
+                           
+                           
+                            {% for profile in profile_list%}
+                    
+
+                      
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <!-- listing block start  -->
+                                <div class="item">
+                                <div class="card">
+                                    <div class="card-img">
+                                    
+                                        <a href="{% url 'user_profile_detail' profile.first_name profile.last_name profile.pk %}">
+                                
+                                    {% if profile.avatarUrl%}
+                                            <img src="{{profile.avatarUrl}}" 
+                                            alt="Roomstack" 
+                                            class="img-fluid-room rounded-top"
+                                    {% else %}
+
+                                            <img src="{% static 'assets/images/avatar.png' %}" 
+                                            alt="Roomstack" 
+                                            class="img-fluid rounded-top"
+                                    {% endif %}
+                                    
+                                        </a>
+                          
+                                    
+                                </div>
+                                    <div class="card-body" style="height:160px;">
+                                        <div class="">
+                                            <h3 class="h4"> <a href="{% url 'user_profile_detail' profile.first_name profile.last_name profile.pk %}" class="text-dark">{{profile.first_name}}, {{profile.last_name}}.</a></h3>
+    
+    
+                                            {% if profile.school and profile.course_of_interest %}
+                                            <p class="text-sm font-weight-semi-bold"><i class="mdi mdi-map-marker mr-1"></i>{{profile.course_of_interest}}. {{profile.school}}</p>
+                                            {% else%}
+                                            <p class="text-sm font-weight-semi-bold"></p>
+                                            {% endif %}
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            {% if profile.bio%}
+                                            <div class="">
+                                              <span class="text-sm font-weight-semi-bold ml-1">{{profile.bio|truncatechars:20}}</span>
+                                            </div>
+                                            {% else %}
+                                            <div class="">
+                                                <span class="text-sm font-weight-semi-bold ml-1"></span>
+                                              </div>
+                                            {% endif %}
+    
+                                            {% if profile.email_verified and profile.sex and profile.course_of_interest and profile.school %}
+                                            <span class="mdi mdi-checkbox-marked-circle text-warning float-right"></span>
+                                            {% else %}
+                                            <span class="mdi mdi-alert mr-1 text-warning text-sm"> partially verified!</span>
+                                            {% endif %}
+    
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                <!-- listing block close  -->
+                            </div>
+                            {% endfor %}
+                          
+                            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3">
+                                <!-- pagination start -->
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination pagination-sm">
+                                        {% if page.has_previous %}
+                                        <li class="page-item"><a class="page-link" href="{% url 'room_mate_list' %}?page=1">First page</a></li>
+                                        <li class="page-item"><a class="page-link" href="{% url 'room_mate_list'%}?page={{page.previous_page_number}}">Prev</a></li>
+                                       
+                                        {% endif %}
+                                        {% for num in page.paginator.page_range %}
+                                        {% if page.number == num%}
+                                        <li class="page-item active"><a class="page-link" href="{% url 'room_mate_list'%}?page={{num}}">{{num}}</a></li>
+                                        {%elif num > page.number|add:'-3' and num < page.number|add:'3' %}
+                                        <li class="page-item"><a class="page-link" href="{% url 'room_mate_list'%}?page={{num}}">{{num}}</a></li>
+                                        {% endif %}
+                                        {% endfor %}
+                                        {%if page.has_next%}
+                                        <li class="page-item"><a class="page-link" href="{% url 'room_mate_list'%}?page={{page.next_page_number}}">Next</a></li>
+                                        <li class="page-item"><a class="page-link" href="{% url 'room_mate_list'%}?page={{page.paginator.num_pages}}">Last</a></li>
+                                        {% endif %}
+                                    </ul>
+                                </nav>
+                                <!-- pagination close -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock content %}

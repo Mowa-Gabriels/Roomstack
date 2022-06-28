@@ -1,0 +1,80 @@
+{% extends 'iroomie/index.html' %}
+
+
+
+{% load static %}
+{% block content %}
+        <div class="container">
+            <div class="pageheader">
+                <div class="row">
+                    <div class="col-xl-7 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="pageheader-caption">
+                            <h1 class="pageheader-caption-title">How Can We Help You?</h1>
+                            <p class="pageheader-caption-text">In case you have any questions, suggestions or if you just want to have a general talk with us. </p>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- pageheader close  -->
+        <!-- header close -->
+        <div class="pt-lg-11 pb-lg-11 pt-7 pb-7">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-8 col-lg-8 col-md-7 col-sm-12 col-12">
+                        <div class="">
+                            <div class="">
+                                <h4 class="mb-3">Fill It, Its Easy</h4>
+                                <form class="form-row">
+                                    <div class="form-group col-md-6">
+                                           <input type="text" class="form-control" id="fname" placeholder="First Name">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                            <input type="text" class="form-control" id="lname" placeholder="Last Name">
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                           <input type="email" class="form-control" id="email" placeholder="Email Adress">
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                            <textarea class="form-control" rows="3" placeholder="Message" id="message"></textarea>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <button class="btn btn-primary" type="submit">Send message</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-5 col-sm-12 col-12">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="mb-3 border-bottom pb-2">Address</h5>
+                                <div class="media">
+                                    <i class="mdi mdi-map-marker mr-2 text-primary"></i>
+                                    <p class="mb-0">BuidL HQ, Adekunle Ajasin University.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="mb-3 border-bottom pb-2">Contact info</h5>
+                                <div class="media">
+                                    <i class="mdi mdi-phone mr-2 text-primary"></i>
+                                    <p class="mb-0">+1800 - 123 - 4567</p>
+                                </div>
+                                <div class="media">
+                                    <i class="mdi mdi-email mr-2 text-primary"></i>
+                                    <p class="mb-0">info@roomstackr.com</p>
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="contact-map"></div>
+
+{% endblock %}
+     

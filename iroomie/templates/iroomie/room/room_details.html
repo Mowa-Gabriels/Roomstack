@@ -1,0 +1,418 @@
+{% extends 'iroomie/index.html' %}
+
+{% load crispy_forms_tags %}
+{% load humanize %}
+{% load static %}
+{% block content %}
+      
+     
+        <!-- listing slide close -->
+        <div class="listing-nav">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <!-- listing nav start -->
+                        <ul>
+                            <li>
+                                <a class="page-scroll active" href="#overview">Overview </a>
+                            </li>
+                            <li>
+                                <a class="page-scroll" href="#amenities">Amenities</a>
+                            </li>
+                            <li>
+                                <a class="page-scroll" href="#reviews">Reviews</a>
+                            </li>
+                            <li>
+                                <a class="page-scroll" href="#gallery">Gallery</a>
+                            </li>
+                            <li>
+                                <a class="page-scroll" href="#video">Video</a>
+                            </li>
+                           
+                           
+                            <li>
+                                <a class="page-scroll" href="#similarspace">Similar Space</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- listing nav close -->
+                </div>
+            </div>
+        </div>
+        <div class="listing-detail-section">
+            <div class="container">
+                {% if messages %}
+                {% for message in messages %}
+
+                    <div {% if message.tags %} class="text-center {{ message.tags }}"{% endif %}>
+                        <span class="closebtn">&times;</span>  
+                        <strong>{{message}}</strong>
+
+                    </div>
+                {% endfor%}
+                {% endif %}
+                <div class="row">
+                    <div class="col-xl-8 col-lg-8 col-md-7 col-sm-12 col-12">
+                        <div class="listing-detail-header" id="overview">
+                            <!-- listing detail head start -->
+                            <div class="listing-detail-head">
+                                <h2 class="listing-detail-head-title">{{room.get_type_display}}</h2>
+                                <p class="listing-detail-head-text"><span class="map-icon"><i class="mdi mdi-map-marker"></i></span>{{room.address}}. {{room.school}}</p>
+                                <div class="meta">
+                                    <span class="mr-2"><i class="mdi mdi-account meta-icon"></i><span class="meta-value">{{room.get_room_composition_display}}</span></span>
+                                    {% comment %} {% if room.room_composition.id > 1 %}
+                                    <span class="mr-2"><i class="mdi mdi-home meta-icon"></i><span class="meta-value">1 Bedroom</span></span>
+                                    {% else %}
+                                    <span class="mr-2"><i class="mdi mdi-home meta-icon"></i><span class="meta-value">3 Bedroom</span></span>
+                                    {% endif %}
+                                    
+                                    <span class="mr-2"><i class="mdi mdi-bed-empty meta-icon"></i><span class="meta-value">3 Bed</span></span>
+                                   {% endcomment %}
+                                   <span class="mr-2"><i class="mdi mdi-bed-empty meta-icon"></i> {{room.get_home_furnishing_display}}</p>
+                                </div>
+                            </div>
+                            <!-- listing detail head close -->
+                        </div>
+                        <!-- listing detail start -->
+                        <div class="listing-detail-card">
+                            <h4 class="listing-detail-card-title">Overview</h4>
+                            <p>{{room.description}}</p>
+                            
+                             
+                        </div>
+                       
+                
+                        <div class="listing-detail-card amenities" id="amenities">
+                            <h4 class="listing-detail-card-title">Amenity</h4>
+                            <div class="row border-bottom mb-3 pb-4">
+                                
+                                
+                            </div>
+
+                         
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul class="list-group list-unstyled">
+                                       {% for amenity in room.additional_amenity.all %}
+                                       <li class="list-item"><span class="mdi mdi-air-conditioner mr-2 text-primary"></span>{{ amenity }}</li>
+                                        {% endfor %}
+                                       
+                                        
+                                    </ul>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <!-- listing detail close -->
+                        <!-- listing detail start -->
+                        <div class="listing-detail-card review-total" id="reviews">
+                            <h4 class="listing-detail-card-title">Reviews</h4>
+                            <div class="row border-bottom mb-3 pb-4">
+                                
+                                
+                            </div>
+
+                         
+
+ {% if not room.reviews.all %}
+ No reviews
+ {% else %}
+
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="review-block mb-0">
+                                        <div class="row">
+                                            {% for review in room.reviews.all %}
+                                            <div class="col-md-3">
+                                                <div class="review-block-img"><img src="{% static '/assets/images/ladyimage.jpg' %}" alt="" class="rounded-circle">
+                                                    <h3 class="review-content-title">{{ review.reviewer.last_name}}</h3>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="review-content">
+                                                    <p class="review-content-heading-text text-dark">{{review.title}}</p>
+                                                    <p class="review-content-text">{{review.experience}} </p>
+                                                    <div class="review-content-head">
+                                                        <div class="review-content-rating">
+                                                            <span class="review-content-date">{{ review.date|naturaltime}}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row border-bottom mb-3 pb-4">
+                                
+                                
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                         
+{% endif %}
+                            <!-- listing detail close -->
+                        </div>
+                        <!-- listing detail close -->
+                        <!-- listing detail start -->
+                        <div class="listing-detail-card review-form ">
+                            <h4 class="listing-detail-card-title">Leave Your Review</h4>
+                            <form method="post" class="form-row">
+                                {% csrf_token %}
+                                <div class="form-group col-12">
+                                    
+                                    <input type="text" name="title" class="form-control" id="id_title" aria-describedby="reviewtitle" placeholder="Review title" required="">
+                                </div>
+
+                                <div class="form-group col-12">
+                                    
+                                    <textarea class="form-control" name="experience" id="id_experience" placeholder="Your experience" rows="3"></textarea>
+                                </div>
+                                <div class="review-form-btn">
+                                    <button type="submit" class="btn btn-primary">Submit Review</button>
+                                  
+                                </div>
+                            </form>
+                        </div>
+                        <!-- listing detail close -->
+                        <!-- listing detail start -->
+                        <div class="listing-detail-card gallery" id="gallery">
+                            <h4 class="listing-detail-card-title">Gallery</h4>
+
+
+                            <div class="row" id="lightgallery">
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 px-sm-2 my-sm-2" data-src="{% static 'assets/images/gallery-zoom-img-1.jpg' %}">
+                                    <a href="#" class="gallery-img"><img src="{{room.imageURLOne}}"
+                                         alt=""
+                                        class="img-fluid rounded w-100"
+                                        style="height:200px;">
+                                        
+                                    </a>
+                                </div>
+                                {%if room.imageURLTwo%}
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 px-sm-2 my-sm-2" data-src="{% static 'assets/images/gallery-zoom-img-2.jpg' %}">
+                                    <a href="#" class="gallery-img"><img src="{{room.imageURLTwo}}" 
+                                        alt="" 
+                                        class="img-fluid rounded w-100"
+                                        style="height:200px;"
+                                        />
+                                       
+                                    </a>
+                                </div>
+                                {% endif %}
+                                {%if room.imageURLThree%}
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 px-sm-2 my-sm-2" data-src="{% static 'assets/images/gallery-zoom-img-3.jpg' %}">
+                                    <a href="#" class="gallery-img"><img src="{{room.imageURLThree}}"
+                                         alt="" class="img-fluid rounded w-100"
+                                         style="height:200px;">
+                                       
+                                    </a>
+                                </div>
+                                {% endif %}
+                                {%if room.imageURLFour%}
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 px-sm-2 my-sm-2" data-src="{% static 'assets/images/gallery-zoom-img-4.jpg' %}">
+                                    <a href="#" class="gallery-img"><img src="{{room.imageURLFour}}" 
+                                        alt="" class="img-fluid rounded w-100"
+                                        style="height:200px;">
+                                       
+                                    </a>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <!-- listing detail close -->
+                        <!-- listing detail start -->
+                        <div class="listing-detail-card video" id="video">
+                            <h4 class="listing-detail-card-title">Video</h4>
+                            <div class="video-testimonial-block">
+                                {% if room.VideoURL %}
+                                <div class="embed-responsive embed-responsive-16by9 rounded">
+                                   
+                                    <video width="320" height="240" controls>
+                                        <source src="{{room.VideoURL}}" type="video/mp4">
+                                    </video>
+                                   
+                                </div>
+                              
+                                    {% else %}
+                                      Video not uploaded
+                                    {% endif %}
+                         
+                            </div>
+                        </div>
+                        <!-- listing detail close -->
+                       
+                        <!-- listing detail start -->
+                        {% comment %} <div class="listing-detail-card listing-location " id="faq">
+                            <h4 class="listing-detail-card-title mb-1">Frequently Ask Question</h4>
+                            <p>Juana Henery’s place is located in Ahemedabad, Gujarat, India</p>
+                            <div class="mb-1">
+                                <h5 class="mb-1">Q. How manyhasellus velfelism pcommodo lacus?</h5>
+                                <p>Suspendisse et risus non metus tincidunt aliquam. Aliquam ornare pellentesque eros necesdere fermentum. Aenean sit amet tellus nec ante dapibus congue at eget leo. </p>
+                            </div>
+                            <div class="mb-1">
+                                <h5 class="mb-1">Q. Is there ferum efficitur feliendulla viverante sit ame?</h5>
+                                <p>Phasellus vel felis fringilla pretium purus ucommodo lacuhasellus laoreet imperdiet arcuatesd posuere. Nunc posuere semper velit posuere sodales fringilla pretium. </p>
+                            </div>
+                            <div class="mb-1">
+                                <h5 class="mb-1">Q. Why estibulum tristiqueorcid lobortis tincidun?</h5>
+                                <p>Aliquam efficitur dolor interdum porttitor ultricieaecenas pretium volutpat commodtid dictum ipsumliquam scelerisque fermentum elitvel volutpat quam.</p>
+                            </div>
+                        </div> {% endcomment %}
+                        <!-- listing detail close -->
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-5 col-sm-12 col-12">
+                        <!-- listing detail start -->
+                        <div class="listing-sidebar">
+                            <!-- listing widget start -->
+                            <div class="listing-sidebar-widget">
+                                <div class="listing-sidebar-widget-content">
+                                    <h3 class="border-bottom pb-3">NGN{{ room.get_rent_range_display}} /<small> per year</small></h3>
+                                    <span class="mr-2"><i class="mdi mdi-coin meta-icon"></i> Bill Spliting: {{room.get_bills_display}}</p>
+                                    
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                          {%if request.user.id == room.owner.id%}
+                            <a href="{% url 'room_edit' room.slug %}" class="btn btn-primary btn-block mb-4"><i class="mdi mdi-pen mr-1"></i>Edit Room Details</a>
+                            <a href="{% url 'room_delete' room.slug %}"" class="btn btn-danger btn-block mb-4"><i class="mdi mdi-delete mr-1"></i>Delete Room</a>
+                            
+                            {% else %}
+
+
+                            
+                            <a href="#" class="btn btn-light btn-block mb-4"><i class="mdi mdi-flag-variant-outline mr-1"></i>Report this listing</a>
+                            {% endif %}
+                          
+                          
+                            <div class="listing-sidebar-widget">
+                                <div class="listing-sidebar-widget-content">
+                                    <h3 class="listing-detail-card-title">Listed by 
+                                      {% if room.owner.email_verified and room.owner.sex and room.owner.course_of_interest and room.owner.school %}
+                                        <span class="mdi mdi-checkbox-marked-circle text-warning float-right"></span>
+                                        <span class="#"></span></h3>
+                                        {% endif %}
+                                    <div class="contact-details">
+                                        {% if room.owner.avatarUrl%}
+                                        <img src="{{room.owner.avatarUrl}}" 
+                                        alt=""
+                                         class="rounded-circle profile-img">
+                                         {% else %}
+                                         <img src="{% static 'assets/images/avatar.png' %}" 
+                                         alt=""
+                                          class="rounded-circle profile-img">
+                                          {% endif %}
+                                        <h5 class="profile-name">{{room.owner.first_name}} {{room.owner.last_name}}</h5>
+                                        {% if room.owner.sex and room.owner.course_of_interest %}
+                                        <small class="profile-joing-date">{{room.owner.sex}}, {{room.owner.course_of_interest}}.</small>
+                                        {% endif %}
+                                        {% if room.owner.school%}
+                                        <p class="text-sm font-weight-semi-bold"><i class="mdi mdi-map-marker mr-1"></i>{{room.owner.school}}</p>
+                                        {% endif %}
+                                        <p class="profile-data">{{room.owner.bio}}</p>
+                                      
+                                        <a href="tel:{{room.owner.phone_no}}"><i class="mdi mdi-phone mr-1"></i></a>
+                                        <a href="https://wa.me/{{room.owner.phone_no}}"><i class="mdi mdi-whatsapp mr-1"></i></a>
+
+                                       
+ 
+                                    </div>
+                                </div>
+                                <div class="listing-sidebar-widget-footer">
+                                    <p class="mb-0 text-dark">Response rate: <span class="text-primary">100%</span></p>
+                                    <p class="text-dark">Response time: <span class="text-primary">within an hour</span></p>
+                                    {% if request.user.id == room.owner.id%}
+                                    <a href="#" class="btn btn-primary btn-block">Edit Profile</a>
+
+                                    {% else %}
+
+                                    <a href="https://wa.me/{{room.owner.phone_no}}" class="btn btn-primary btn-block">Contact Host</a>
+                                    
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- listing detail close -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pt-lg-11 pb-lg-11 pt-7 pb-7 bg-white" id="similarspace">
+            <div class="container">
+                <div class="row">
+                    <!-- section heading start  -->
+                    <div class="offset-xl-2 col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="mb-5 text-center">
+                            <h2 class="h3">More Places to Stay</h2>
+                        </div>
+                    </div>
+                    <!-- section heading close  -->
+                </div>
+                <div class="theme-carousel">
+                    <div class="owl-carousel owl-theme owl-listing">
+                        {% for room in rooms%}
+                        <div class="item">
+                            <!-- listing block start  -->
+                            <div class="card">
+                                <div class="card-img">
+                                    {%if room.imageURLOne%}
+                                    <a href="{% url 'room_detail' room.slug %}"> <img src="{{room.imageURLOne}}"
+                                        
+                                         class="img-fluid rounded-top"
+                                          />
+                                    {% elif room.imageURLTwo%}
+                                    <a href="{% url 'room_detail' room.slug %}"> <img src="{{room.imageURLTwo}}"
+                                        
+                                         class="img-fluid rounded-top"
+                                         />
+                                    {% elif room.imageURLThree%}
+                                    <a href="{% url 'room_detail' room.slug %}"> <img src="{{room.imageURLThree}}"
+                                        
+                                         class="img-fluid rounded-top"
+                                         />
+                                    {% else %}
+                                    <a href="{% url 'room_detail' room.slug %}"> <img src="{{room.imageURLFour}}"
+                                        
+                                         class="img-fluid rounded-top"
+                                        />
+                                    {% endif %}
+                                   
+                                </div>
+                                <div class="card-body">
+                                    <div class="">
+                                        <h3 class="h4"> <a href="{% url 'room_detail' room.slug %}" class="text-dark">{{room.get_type_display}}</a></h3>
+                                        <p class="text-sm font-weight-semi-bold"><i class="mdi mdi-map-marker mr-1"></i>{{room.address}}. {{room.school}}</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="">
+                                            <span class="text-dark h5">NGN{{room.get_rent_range_display}}</span><span class="text-sm font-weight-semi-bold ml-1"></span>
+                                        </div>
+                                        {% if room.owner.avatarUrl %}
+                                        <div class="media align-items-center">
+                                            <img src="{{room.owner.avatarUrl}}" alt="" class="avatar-xs rounded-circle mr-2">
+                                        </div>
+                                        {% else %}
+                                        <div class="media align-items-center">
+                                            <img src="{% static 'assets/images/avatar.png' %}" alt="" class="avatar-xs rounded-circle mr-2">
+                                        </div>
+                                        {% endif %}
+
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- listing block close  -->
+                        </div>
+                        
+
+                        {% endfor %}
+                     
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endblock content %}
+
+       

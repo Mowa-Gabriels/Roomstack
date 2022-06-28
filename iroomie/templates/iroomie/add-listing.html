@@ -1,0 +1,368 @@
+{% extends 'iroomie/index.html' %}
+
+
+
+{% load static %}
+{% block content %}
+        <!-- header close -->
+        <div class="pt-lg-11 pb-lg-11 pt-7 pb-7">
+            <div class="container">
+                <div class="row">
+                    <div class="offset-xl-1 col-xl-10 col-lg-12 col-md-12 col-sm-12 col-12 text-center">
+                        <div class="mb-5">
+                            <h2>Let’s get started listing your space.</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <form action="#" class="">
+                            <!-- Step 1 -->
+                            <div class="row mb-8">
+                                <div class="col-xl-12">
+                                    <div class="mb-4 border-bottom pb-2">
+                                        <h4 class="mb-0">Basic information</h4>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                    <div class="form-group">
+                                        <label for="propertyname">Property Name</label>
+                                        <input type="text" class="form-control required" id="propertyname" placeholder="Enter Your Property Name" name="propertyname">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                    <div class="form-group">
+                                        <label for="home">Home Type</label>
+                                        <select class="form-control required" id="home" name="home">
+                                            <option selected>Apartment</option>
+                                            <option value="Space">Space</option>
+                                            <option value="Retail">Retail</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-4 col-sm-12 col-12">
+                                    <div class="form-group">
+                                        <label for="country">Country / Region</label>
+                                        <input type="text" class="form-control required" id="country" placeholder="Enter Your Country Name" name="country">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-4 col-sm-12 col-12">
+                                    <div class="form-group">
+                                        <label for="address">Street Address</label>
+                                        <input type="text" class="form-control required" id="address" placeholder="Enter Your Street Address" name="address">
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                                    <div class="form-group">
+                                        <label for="city">City</label>
+                                        <select class="form-control required" id="city" name="city">
+                                            <option selected>Ahmedabad</option>
+                                            <option value="Surat">Surat</option>
+                                            <option value="Mumbai">Mumbai</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                                    <div class="form-group">
+                                        <label for="state">State</label>
+                                        <select class="form-control required" id="state" name="state">
+                                            <option selected>Gujarat</option>
+                                            <option value="Maharashtra">Maharashtra</option>
+                                            <option value="Rajasthan">Rajasthan</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                                    <div class="form-group">
+                                        <label for="zipcode">Zip Code</label>
+                                        <input type="text" class="form-control required" id="zipcode" placeholder="e.g 380019" name="zipcode">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Step 2 -->
+                            <div class="row mb-8">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="mb-4 border-bottom pb-2">
+                                        <h4 class="mb-0">Disposition & Amenities</h4>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                                    <div class="guestpicker">
+                                        <div class="guestpicker-body">
+                                            <p class="text-dark">Guests</p>
+                                            <div class="input-group">
+                                                <input type="button" value="-" class="button-minus" data-field="quantity">
+                                                <input type="number" step="1" max="10" value="1" name="quantity" class="quantity-field">
+                                                <input type="button" value="+" class="button-plus" data-field="quantity">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p>How many Bedrooms can guests use?</p>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                                    <div class="guestpicker">
+                                        <div class="guestpicker-body">
+                                            <p class="text-dark">Bedroom</p>
+                                            <div class="input-group">
+                                                <input type="button" value="-" class="button-minus" data-field="quantity">
+                                                <input type="number" step="1" max="10" value="1" name="quantity" class="quantity-field">
+                                                <input type="button" value="+" class="button-plus" data-field="quantity">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p>How many Bedrooms can guests use?</p>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                                    <div class="guestpicker">
+                                        <div class="guestpicker-body">
+                                            <p class="text-dark">Bathroom</p>
+                                            <div class="input-group">
+                                                <input type="button" value="-" class="button-minus" data-field="quantity">
+                                                <input type="number" step="1" max="10" value="1" name="quantity" class="quantity-field">
+                                                <input type="button" value="+" class="button-plus" data-field="quantity">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p>How many Bathrooms can guests use?</p>
+                                </div>
+                                <div class="col-xl-12">
+                                    <div class="mt-4 mb-3">
+                                        <h5>Amenities</h5>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck19">
+                                        <label class="custom-control-label" for="customCheck19">Kitchen</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck20">
+                                        <label class="custom-control-label" for="customCheck20">TV</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck21">
+                                        <label class="custom-control-label" for="customCheck21">Heating</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck22">
+                                        <label class="custom-control-label" for="customCheck22">Air conditioning</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck23">
+                                        <label class="custom-control-label" for="customCheck23">Washer</label>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck24">
+                                        <label class="custom-control-label" for="customCheck24">Pool</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck25">
+                                        <label class="custom-control-label" for="customCheck25">Wifi</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck26">
+                                        <label class="custom-control-label" for="customCheck26">Washing machine</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck27">
+                                        <label class="custom-control-label" for="customCheck27">Indoor fireplace</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck28">
+                                        <label class="custom-control-label" for="customCheck28">Desk for work</label>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck29">
+                                        <label class="custom-control-label" for="customCheck29">Doorman</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck30">
+                                        <label class="custom-control-label" for="customCheck30">Free parking on premises
+                                        </label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck31">
+                                        <label class="custom-control-label" for="customCheck31">Heating</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck32">
+                                        <label class="custom-control-label" for="customCheck32">Hair dryer</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck34">
+                                        <label class="custom-control-label" for="customCheck34">Toiletteries</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Step 3 -->
+                            <div class="row mb-8">
+                                <div class="col-xl-12">
+                                    <div class="mb-4 border-bottom pb-2">
+                                        <h4 class="mb-0">Description</h4>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12">
+                                    <p>About Your Space</p>
+                                </div>
+                                <div class="col-xl-12 mb-8">
+                                    <div id="editor">
+                                        <p>Hello World!</p>
+                                        <p>Some initial <strong>bold</strong> text</p>
+                                        <p><br></p>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12">
+                                    <small>Write a quick summary of your place. You can highlight what’s special about your space</small>
+                                </div>
+                            </div>
+                            <!-- Step 4 -->
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="mb-4 border-bottom pb-2">
+                                        <h4 class="mb-0">Add Gallery Images </h4>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12">
+                                    <div id="drag-drop-area"></div>
+                                    <p>In asemeu lectus viverra aliquet ac quis magestibulum ac tempor magnteger.</p>
+                                </div>
+                                <div class="col-xl-12 mt-4">
+                                    <div class="mb-4 border-bottom pb-2">
+                                        <h4 class="mb-0">Add your space video </h4>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12">
+                                    <label for="basic-url">Default Video Link</label>
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" id="basic-url"  placeholder="https://www.youtube.com/watch?v=VQWgez89JlM">
+                                    </div>
+                                </div>
+                                <div class="col-xl-12 mb-1 mt-1">
+                                    <span>Or</span>
+                                </div>
+                                <div class="col-xl-12">
+                                    <label for="basic-url">Browse Video</label>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="customFile">
+                                        <label class="custom-file-label" for="customFile">Choose Video</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-xl-12">
+                                    <button type="button" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    from django.db import models
+from authentication.models import User
+
+# Create your models here.
+
+
+class School(models.Model):
+    name = models.CharField(max_length=11)
+
+
+    def __str__(self):
+        return self.name
+
+
+class Room(models.Model):
+
+    TYPE = (
+        ('A Room', 'A Room'),
+        ('A Room Selfcon', 'A Room Selfcon'),
+        ('Two Bedrooom', 'Two Bedroom'),
+    )
+
+    RENT = (
+        ('10k -50k', '10k -50k'),
+        ('50k -100k', '50k -100k'),
+        ('Above 100K', 'Above100K'),
+    )
+
+    BILLS = (
+        ('Split bills evenly', 'Split bills evenly'),
+        ('Negotiatory', 'Negotiatory'),
+        
+    )
+    ROOM_COMPOSITION= (
+        ('One Person', 'One person'),
+        ('Two', 'Two'),
+        ('More Than Two', 'More Than Two'),
+    )
+    STAY_DURATION = (
+        ('One Semester', 'One Semester'),   
+        ('One Session', 'One Session'),
+        ('ShortTerm', 'ShortTerm'),
+        ('LongTerm', 'LongTerm'),
+        ('Negotiatory', 'Negotiatory'),
+    )
+
+    VISIT_RATE= (
+        ('1', 'One or more occasionally'),
+        ('2', 'One or more frequently'),
+    )
+    HOME_FUNISHING = (
+        ('Completely furnished', 'Completely furnished'),
+        ('Partially', 'Partially'),
+        ('Nothing dey for this room', 'Nothing dey for this room'),
+    )
+    AMENITY = (
+        ('1', '1'),
+        ('2', '2'),
+        ('3', '3'),
+    )
+
+
+ 
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, default=1, related_name='owner_room')
+    name = models.CharField(max_length=225)
+    type = models.CharField(max_length=225, null=True, choices=TYPE)
+    school = models.ForeignKey(School, on_delete=models.SET_NULL, null=True)
+    address = models.CharField(max_length=225)
+    description = models.TextField(max_length=225)
+    rent_range = models.CharField(max_length=14, null=True, choices=RENT)
+    bills = models.CharField(max_length=225, null=True, choices=BILLS)
+    room_composition = models.CharField(max_length=225, null=True, choices=ROOM_COMPOSITION)
+    stay_duration = models.CharField(max_length=225, null=True, choices=STAY_DURATION)
+    #visit_rate = models.CharField(max_length=14, null=True, choices=VISIT_RATE)
+    home_furnishing = models.CharField(max_length=225, null=True, choices=HOME_FUNISHING)
+    #additional_amenity = models.CharField(max_length=14, null=True, choices=AMENITY)
+
+
+
+    def __str__(self):
+        return self.address

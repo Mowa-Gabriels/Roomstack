@@ -1,0 +1,25 @@
+{% extends 'iroomie/login-page.html' %}
+
+
+
+{% load static %}
+{% block content %}
+
+<body class="" style="background: url(./assets/images/gallery-img-1.jpg) no-repeat center center fixed; -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;">
+    <div class="container">
+        <div class="row align-items-center min-vh-100 ">
+            <div class="offset-xl-2 col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                <div class="text-center">
+                    <h1 class="display-1 font-weight-bold text-primary">404 Error</h1>
+                    <p class="h2">My Gee, looks like you are lost!</p>
+                    <p class="lead">We can't find the page you're looking for.</p>
+                    <a href="{% url 'home' %}" class="btn btn-primary mt-3">Back To Homepage</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

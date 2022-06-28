@@ -1,0 +1,124 @@
+
+{% load static %}
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Roomstack | Find Rooms and Roommates on campus.">
+    <title>Roomstack | Find Rooms and Roommates on campus.</title>
+     {% comment %} <link rel="shortcut icon" href="{% static 'assets/images/favicon.ico' %}" type="image/x-icon">  {% endcomment %}
+    <!-- Bootstrap CSS -->    
+     
+
+     <!-- Theme CSS -->
+     <link rel="stylesheet" href="{% static 'assets/css/theme.min.css' %}">
+
+
+</head>
+
+{% load crispy_forms_tags %}
+{% block content %}
+
+<body>
+    <div class="min-vh-100" style="background: url({% static 'assets/images/dropdown-img.jpg' %})no-repeat center center fixed; -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;">
+        <div class="container">
+            <div class="row d-flex align-items-center min-vh-100">
+                <div class="col-xl-6 col-lg-8 col-md-12 col-sm-12 col-12">
+                    <div class="card card-body p-5">
+                        <h3 class="mb-4">Welcome back to Roomstack</h3>
+                        <form method="post" ">
+                            {% csrf_token %}
+                            <div class="form-group">
+
+                                {% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+                                    
+
+                                
+
+<div id="div_id_username" class="form-group"> 
+    <label for="id_username" class=" requiredField">
+    Email address<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="254" class="textinput textInput form-control" required id="id_username"> </div> </div> 
+    <div id="div_id_password" class="form-group"> <label for="id_password" class=" requiredField">
+    Password<span class="asteriskField">*</span> </label> <div class=""> <input type="password" name="password" autocomplete="current-password" class="textinput textInput form-control" required id="id_password"> </div> </div>
+
+     
+                            </div>
+                           
+                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                            {% comment %} <a href="@" class="btn btn-google btn-user btn-block">
+                                <i class="fab fa-google fa-fw"></i> Login with Google
+                              </a> {% endcomment %}
+                            <div class="d-flex justify-content-between mb-2 pb-2 mt-3">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="rememberme">
+                                    <label class="custom-control-label" for="rememberme">Remember Me</label>
+                                </div>
+                                <div class="text-sm font-weight-bold">
+                                    <a href="{% url 'password_reset' %}" class="text-dark"> Forgot Password?</a>
+                                </div>
+                            </div>
+                        </form>
+                        <hr>
+                        <div class="text-center">
+                            <p class="text-sm mb-0">Don’t Have an Account?<a href="{%url 'register' %}"> Sign Up</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}
+    <!-- ============================================================== -->
+    <!-- end main wrapper -->
+    <!-- ============================================================== -->
+      <!-- Libs JS -->
+      <script src="{% static 'assets/libs/jquery/dist/jquery.min.js' %}"></script>
+      <script src="{% static 'assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+      <script src="{% static 'assets/libs/select2/dist/js/select2.full.min.js' %}"></script>
+      <script src="{% static 'assets/libs/select2/dist/js/select2.min.js' %}"></script> 
+      <script src="{% static 'assets/libs/jquery-raty-js/lib/jquery.raty.js' %}"></script>  
+      <script src="{% static 'assets/libs/jquery-slimscroll/jquery.slimscroll.min.js' %}"></script>
+      <script src="{% static 'assets/libs/jquery.easing/jquery.easing.min.js' %}"></script> 
+      <script src="{% static 'assets/libs/lightgallery/dist/js/lightgallery.min.js' %}"></script>
+      <script src="{% static 'assets/libs/lg-pager/dist/lg-pager.min.js' %}"></script>
+      <script src="{% static 'assets/libs/lg-autoplay/dist/lg-autoplay.min.js' %}"></script>
+      <script src="{% static 'assets/libs/lg-fullscreen/dist/lg-fullscreen.min.js' %}"></script>
+      <script src="{% static 'assets/libs/lg-zoom/dist/lg-zoom.min.js' %}"></script>
+      <script src="{% static 'assets/libs/lg-hash/dist/lg-hash.min.js' %}"></script>
+      <script src="{% static 'assets/libs/lg-share/dist/lg-share.min.js' %}"></script>   
+      <script src="{% static 'assets/libs/quill/dist/quill.min.js' %}"></script>
+      <script src="{% static 'assets/libs/uppy/dist/uppy.min.js' %}"></script>
+      <script src="{% static 'assets/libs/moment/min/moment.min.js' %}"></script>    
+      <script src="{% static 'assets/libs/lightpick/lightpick.js' %}"></script>
+      <script src="{% static 'assets/libs/prismjs/prism.js' %}"></script>
+      <script src="{% static 'assets/libs/leaflet/dist/leaflet.js' %}"></script> 
+   
+      
+  
+       
+      
+      
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js"></script> 
+     
+    
+    
+   
+      
+      
+    
+    
+  
+      <!-- Theme JS -->
+     <script src="{% static 'assets/js/theme.min.js' %}"></script>

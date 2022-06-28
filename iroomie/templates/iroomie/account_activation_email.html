@@ -1,0 +1,10 @@
+{% autoescape off %}
+To initiate the account activation process for your account {{ user.first_name }}
+click the link below:
+http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+If clicking the link above doesnt work, please paste the url in a new browser window instead.
+
+
+Sincerely,
+The Roomstack Team
+{% endautoescape%}
