@@ -1,4 +1,4 @@
-# roomstack
+# roomstack (roomstack.herokuapp.com)
 
 Roomstack is a student marketplace that revolutionizes room and roommates searching by connecting students(who are either listers or renters) through filtering and preference matching.
 
