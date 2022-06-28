@@ -13,3 +13,6 @@ Heroku
 
 ## Role of Linode
 Static files are among the most important part of this webapp. However, Django itself should not serve static files( CSS, Javascript, images, videos..) but rather should reference these files from a production-efficient static file server. Linode provides a service that makes it very easy to serve static files.
+
+
+# LINODE X HASHNODE
